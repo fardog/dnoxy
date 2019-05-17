@@ -41,10 +41,28 @@ building blocks. You would pair `dnoxy-dns` with a caching DNS server like
 [dnsmasq]: http://www.thekelleys.org.uk/dnsmasq/doc.html
 [nginx]: https://nginx.org/
 
+## Building
+
+Dockerfiles are includes for the DNS and HTTP components; to build:
+
+```
+# dns component
+docker build -t dnoxy-dns:latest -f Dockerfile-dns
+# http component
+docker build -t dnoxy-http:latest -f Dockerfile-http
+```
+
+Dependencies are managed with Go 1.11+ modules; to install without Docker:
+
+```
+go mod download
+go install -v ./...
+```
+
 ## License
 
 ```
-   Copyright 2018 Nathan Wittstock
+   Copyright 2019 Nathan Wittstock
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

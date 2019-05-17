@@ -1,0 +1,34 @@
+# dep container
+FROM golang:alpine as build_base
+
+RUN apk --no-cache add ca-certificates git && update-ca-certificates
+
+ENV GO111MODULE=on
+
+WORKDIR /go/src/github.com/fardog/dnoxy
+
+COPY go.mod .
+COPY go.sum .
+
+RUN go mod download
+
+# build container
+FROM build_base as builder
+# RUN mkdir -p /go/src/github.com/fardog/dnoxy
+WORKDIR /go/src/github.com/fardog/dnoxy
+COPY . .
+RUN go build -o dnoxy-http cmd/dnoxy-http/main.go
+
+# service container
+FROM alpine
+
+LABEL maintainer="Nathan Wittstock <nate@fardog.io>"
+
+EXPOSE 80
+
+RUN apk --no-cache add ca-certificates && update-ca-certificates
+
+WORKDIR /app
+COPY --from=builder /go/src/github.com/fardog/dnoxy/dnoxy-http /app/
+
+ENTRYPOINT [ "./dnoxy-http" ]
