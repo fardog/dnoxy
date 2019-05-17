@@ -15,10 +15,9 @@ DNS-over-HTTPS servers—such as those run by [Cloudflare][cdns] or
 
 Right now, _dnoxy_ has two components:
 
-* `dnoxy-http` – an HTTP server which implements Cloudflare's
-  [DNS-over-HTTPS DNS Wireformat][dns-wireformat], and looks up answers against
-  plain DNS.
-* `dnoxy-dns` – a DNS server which can perform lookups against a DNS-over-HTTPS
+- `dnoxy-http` – an HTTP server which implements Cloudflare's [DNS-over-HTTPS
+  DNS Wireformat][dns-wireformat], and looks up answers against plain DNS.
+- `dnoxy-dns` – a DNS server which can perform lookups against a DNS-over-HTTPS
   server, such as `dnoxy-http` or Cloudflare DNS.
 
 [dns-wireformat]:

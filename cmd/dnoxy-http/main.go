@@ -20,7 +20,7 @@ import (
 
 var (
 	listenAddress = flag.String(
-		"listen", ":53", "listen address, as `[host]:port`",
+		"listen", ":80", "listen address, as `[host]:port`",
 	)
 	handlerPath = flag.String(
 		"path",
