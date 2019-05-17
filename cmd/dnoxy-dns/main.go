@@ -55,7 +55,7 @@ func serve(net string) {
 	signal.Notify(sig, syscall.SIGINT, syscall.SIGTERM)
 	<-sig
 
-	log.Infof("shutting down %s on interrupt\n", net)
+	log.Infof("shutting down %s on interrupt", net)
 	if err := server.Shutdown(); err != nil {
 		log.Errorf("got unexpected error %s", err.Error())
 	}
