@@ -43,7 +43,7 @@ building blocks. You would pair `dnoxy-dns` with a caching DNS server like
 
 ## Building
 
-Dockerfiles are includes for the DNS and HTTP components; to build:
+Dockerfiles are included for the DNS and HTTP components; to build:
 
 ```
 # dns component
